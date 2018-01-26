@@ -1,0 +1,16 @@
+FROM node:boron
+WORKDIR /kahveefendi
+# Copy angular2 src
+COPY ./kahveciEfendi-client/app /kahveefendi/app
+COPY ./kahveciEfendi-client/assets /kahveefendi/assets
+COPY ./kahveciEfendi-client/favicon.ico /kahveefendi/favicon.ico
+COPY ./kahveciEfendi-client/index.html /kahveefendi/index.html
+COPY ./kahveciEfendi-client/package.json /kahveefendi/package.json
+COPY ./kahveciEfendi-client/tsconfig.json /kahveefendi/tsconfig.json
+COPY ./kahveciEfendi-client/tslint.json /kahveefendi/tslint.json
+COPY ./kahveciEfendi-client/webpack.config.js /kahveefendi/webpack.config.js
+# Install dependencies
+RUN npm install -g webpack-dev-server
+RUN npm install
+
+CMD ["npm", "start"]

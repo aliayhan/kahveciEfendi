@@ -1,0 +1,3 @@
+FROM tomcat:8.0-jre8
+# Copy builds
+COPY ./kahveciEfendi-ws/target/kahveciefendi.war /usr/local/tomcat/webapps/kahveciefendi.war

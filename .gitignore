@@ -1,0 +1,6 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# These have their own repo
+kahveciEfendi-client/
+kahveciEfendi-ws/

@@ -1,0 +1,4 @@
+FROM mysql:5.7.17
+
+COPY ./kahveciEfendi-db/mysql_encode.cnf /etc/mysql/conf.d/mysql_encode.cnf
+COPY ./kahveciEfendi-db/schema /docker-entrypoint-initdb.d
