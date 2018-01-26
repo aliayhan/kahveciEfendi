@@ -1,6 +1,30 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
 
-# These have their own repo
-kahveciEfendi-client/
-kahveciEfendi-ws/
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### Node ###
+node_modules
+build
+app/**/*.js
+*.log
+*.map
+*.d.ts
+*.DS_Store

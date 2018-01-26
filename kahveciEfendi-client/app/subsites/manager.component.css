@@ -1,0 +1,52 @@
+#logo {
+	text-align: center;
+}
+
+#header {
+	font-size: 30px;
+	margin-bottom: 20px;
+	display: block;
+}
+
+#drinkListItem {
+	padding-top: 10px;
+}
+
+#drinkListBtn {
+	padding-top: 6px;
+	text-align: center;
+}
+
+#dialogAdditions {
+	display: block;
+	text-align: center;
+}
+
+#newDrinkBtn {
+	display: block;
+	text-align: right;
+}
+
+.saveBtn {
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+input {
+	color: #000000 !important;
+	background-color: #ffffff !important;
+	width: 250px !important;
+	margin: 10px;
+}
+
+.my-text-wrap {
+	display: block;
+	text-align: left;
+	word-wrap: break-word;
+}
+
+.ui-grid {
+	padding: 5px;
+}

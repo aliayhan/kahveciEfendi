@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "loginName": "john",
+            "fullName": "John Arslan",
+            "role": "USER"
+        },
+        {
+            "loginName": "jessica",
+            "fullName": "Jessica Parker",
+            "role": "USER"
+        },
+        {
+            "loginName": "hakan",
+            "fullName": "Hakan Akmen (Admin)",
+            "role": "ADMIN"
+        }
+    ]
+}

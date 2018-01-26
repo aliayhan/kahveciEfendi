@@ -1,0 +1,217 @@
+<div class="ui-g">
+
+  <div *ngIf="showAdminMenu()" class="ui-g-12 ui-g-nopad">
+    <mainmenu></mainmenu>
+  </div>
+
+  <div class="ui-g-12 ui-md-3">
+  
+    <div id="logo" class="ui-g-12">
+      <img src="../resources/Logo.jpg" style="width: 75%">
+    </div>
+
+    <!-- Login -->
+    <div class="ui-g-12 ui-g-nopad">
+      <login></login>
+    </div>
+
+  </div>
+
+  <div class="ui-g-12 ui-md-9">
+    <div id="header" class="ui-g-12">Kahveci Efendi's</div>
+
+    <div class="ui-g-12" *ngIf="errorMessage != undefined">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <b>{{errorMessage}}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <div class="ui-g">
+      
+        <div class="ui-g-12">
+        
+          <!-- Drinks list -->
+          <p-dataList [value]="drinks" [paginator]="true" [rows]="10" *ngIf="drinks.length > 0">
+            <p-header>İçecekler ve ekleri</p-header>
+            <template let-drink pTemplate="item">
+              <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                  
+                  <div class="ui-grid-col-5">
+                    <div class="ui-grid ui-grid-responsive">
+                      <div class="ui-grid-row my-text-wrap">
+                        <b>{{drink.name}}</b>
+                      </div>
+                      <div class="ui-grid-row my-text-wrap">
+                        {{drink.description}}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div id="drinkListItem" class="ui-grid-col-4  my-text-wrap">
+                    {{formatAdditions(drink.additions)}}
+                  </div>
+                  
+                  <div id="drinkListItem" class="ui-grid-col-1 my-text-wrap">
+                    {{drink.price | number : '1.2-2'}} TL
+                  </div>
+                  
+                  <div id="drinkListBtn" class="ui-grid-col-1 my-text-wrap">
+                    <button pButton type="button" (click)="editDrink(drink)" icon="fa-edit" class="ui-button-secondary"></button>
+                  </div>
+
+                  <div id="drinkListBtn" class="ui-grid-col-1 my-text-wrap">
+                    <button pButton type="button" (click)="deleteDrink(drink)" icon="fa-close" class="ui-button-danger"></button>
+                  </div>
+                  
+                </div>
+              </div>
+            </template>
+          </p-dataList>
+          
+        </div>
+        <div id="newDrinkBtn" class="ui-g-12">
+          <button pButton type="button" (click)="newDrink()" icon="fa-check" label="Yeni içecek ekle" class="ui-button-success"></button>
+        </div>
+        
+        <div class="ui-g-12">
+        
+          <!-- DrinkAdditions list -->
+          <p-dataList [value]="drinkAdditions" [paginator]="true" [rows]="10" *ngIf="drinkAdditions.length > 0">
+            <p-header>İçecek ekleri</p-header>
+            <template let-drinkAddition pTemplate="item">
+              <div class="ui-grid ui-grid-responsive">
+                <div class="ui-grid-row">
+                  
+                  <div class="ui-grid-col-9">
+                    <div class="ui-grid ui-grid-responsive">
+                      <div class="ui-grid-row my-text-wrap">
+                        <b>{{drinkAddition.name}}</b>
+                      </div>
+                      <div class="ui-grid-row my-text-wrap">
+                        {{drinkAddition.description}}
+                      </div>
+                    </div>
+                  </div>
+                                   
+                  <div id="drinkListItem" class="ui-grid-col-1 my-text-wrap">
+                    {{drinkAddition.price | number : '1.2-2'}} TL
+                  </div>
+                  
+                  <div id="drinkListBtn" class="ui-grid-col-1 my-text-wrap">
+                    <button pButton type="button" (click)="editDrinkAddition(drinkAddition)" icon="fa-edit" class="ui-button-secondary"></button>
+                  </div>
+
+                  <div id="drinkListBtn" class="ui-grid-col-1 my-text-wrap">
+                    <button pButton type="button" (click)="deleteDrinkAddition(drinkAddition)" icon="fa-close" class="ui-button-danger"></button>
+                  </div>
+                  
+                </div>
+              </div>
+            </template>
+          </p-dataList>
+        
+        </div>
+        <div class="ui-g-12">
+          <button pButton type="button" (click)="newDrinkAddition()" icon="fa-check" label="Yeni içecek eki ekle" class="ui-button-success"></button>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <myfooter></myfooter>
+    </div>
+  </div>
+
+</div>
+
+<!-- Drink dialog -->
+<p-dialog header="İçeceği değiştir/ekle" [(visible)]="showDrinkDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentDrink">
+    <div class="ui-grid-row">
+      <b>İsim</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="text" pInputText [(ngModel)]="currentDrink.name"/>
+    </div>
+    <div class="ui-grid-row">
+      <b>Açıklama</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="text" pInputText [(ngModel)]="currentDrink.description"/>  
+    </div>
+    <div class="ui-grid-row">
+      <b>Fiyat</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="number" min="0" max="999999" step="0.01" pInputText [(ngModel)]="currentDrink.price"/>  
+    </div>
+    <div class="ui-grid-row" *ngIf="drinkAdditions.length > 0">
+      <b>Ek seçimi</b>
+    </div>
+    <div id="dialogAdditions" class="ui-grid-row" *ngIf="drinkAdditions.length > 0">
+    
+      <!-- Additions -->
+      <p-dataList [value]="drinkAdditions">
+        <template let-addition pTemplate="item">
+          <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+              <p-checkbox name="group1" value="{{addition.id}}" label="{{addition.name}} [{{addition.price}}TL]" [(ngModel)]="selectedAdditions"></p-checkbox>
+            </div>
+          </div>
+        </template>
+      </p-dataList>
+      
+    </div>
+  </div>
+  <footer>
+    <div class="saveBtn">
+      <button type="button" pButton (click)="saveEditDrink()" icon="fa-check" label="İçeceği değiştir/ekle" class="ui-button-success"></button>
+    </div>
+  </footer>
+</p-dialog>
+
+<!-- DrinkAddition dialog -->
+<p-dialog header="İçecek ekini değiştir/ekle" [(visible)]="showDrinkAdditionDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentDrinkAddition">
+    <div class="ui-grid-row">
+      <b>İsim</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="text" pInputText [(ngModel)]="currentDrinkAddition.name"/>
+    </div>
+    <div class="ui-grid-row">
+      <b>Açıklama</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="text" pInputText [(ngModel)]="currentDrinkAddition.description"/>  
+    </div>
+    <div class="ui-grid-row">
+      <b>Fiyat</b>
+    </div>
+    <div class="ui-grid-row">
+      <input type="number" min="0" max="999999" step="0.01" pInputText [(ngModel)]="currentDrinkAddition.price"/>  
+    </div>
+  </div>
+  <footer>
+    <div class="saveBtn">
+      <button type="button" pButton (click)="saveEditDrinkAddition()" icon="fa-check" label="İçecek ekini değiştir/ekle" class="ui-button-success"></button>
+    </div>
+  </footer>
+</p-dialog>
+
+
+
+
+
+
+
+
+
+
+
+

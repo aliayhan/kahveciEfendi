@@ -1,0 +1,111 @@
+<div class="ui-g">
+
+  <div *ngIf="showAdminMenu()" class="ui-g-12 ui-g-nopad">
+    <mainmenu></mainmenu>
+  </div>
+
+  <div class="ui-g-12 ui-md-3">
+
+    <div id="logo" class="ui-g-12">
+      <img src="../resources/Logo.jpg" style="width: 75%">
+    </div>
+
+    <!-- Login -->
+    <div class="ui-g-12 ui-g-nopad">
+      <login></login>
+    </div>
+    
+  </div>
+
+  <div class="ui-g-12 ui-md-9">
+    <div id="header" class="ui-g-12">Kahveci Efendi's</div>
+
+    <div class="ui-g-12" *ngIf="errorMessage != undefined">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <b>{{errorMessage}}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <div class="ui-g">
+
+        <!-- User report -->      
+        <div class="ui-g-12">
+          <p-panel header="Kullanıcıların siparişi bazında" [toggleable]="true" [collapsed]="false">
+            <div class="ui-grid ui-grid-responsive">
+
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-3 ui-fluid">
+                  <p-dropdown [options]="selectableUsers" [(ngModel)]="selectedUser" (onChange)="generateUserReport()" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-1" style="display: block; height: 15px">
+                </div>
+                <div class="ui-grid-col-7">
+                  <button pButton type="button" (click)="updateUserChart()" class="ui-button-success" label="Raporu güncelle"></button>
+                </div>
+              </div>
+              <div *ngIf="selectedUser != undefined">
+                <br/>
+                <p-chart #userChart type="line" [data]="userChartData"></p-chart>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+        
+        <!-- Drink report -->      
+        <div class="ui-g-12">
+          <p-panel header="Sipariş verilmiş olan içeceklerin bazında" [toggleable]="true" [collapsed]="false">
+            <div class="ui-grid ui-grid-responsive">
+
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-3 ui-fluid">
+                  <p-dropdown [options]="selectableOrderedDrinks" [(ngModel)]="selectedOrderedDrink" (onChange)="generateOrderedDrinkReport()" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-1" style="display: block; height: 15px">
+                </div>
+                <div class="ui-grid-col-7">
+                  <button pButton type="button" (click)="updateOrderedDrinkChart()" class="ui-button-success" label="Raporu güncelle"></button>
+                </div>
+              </div>
+              <div *ngIf="selectedOrderedDrink != undefined">
+                <br/>
+                <p-chart #drinkChart type="bar" [data]="drinkChartData"></p-chart>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+        
+        <!-- Addition report -->      
+        <div class="ui-g-12">
+          <p-panel header="Sipariş verilmiş olan içecek eklerin bazında" [toggleable]="true" [collapsed]="false">
+            <div class="ui-grid ui-grid-responsive">
+
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-3 ui-fluid">
+                  <p-dropdown [options]="selectableOrderedAdditions" [(ngModel)]="selectedOrderedAddition" (onChange)="generateOrderedAdditionReport()" [autoWidth]="false"></p-dropdown>
+                </div>
+                <div class="ui-grid-col-1" style="display: block; height: 15px">
+                </div>
+                <div class="ui-grid-col-7">
+                  <button pButton type="button" (click)="updateOrderedAdditionChart()" class="ui-button-success" label="Raporu güncelle"></button>
+                </div>
+              </div>
+              <div *ngIf="selectedOrderedAddition != undefined">
+                <br/>
+                <p-chart #additionChart type="bar" [data]="additionChartData"></p-chart>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <myfooter></myfooter>
+    </div>
+  </div>
+
+</div>

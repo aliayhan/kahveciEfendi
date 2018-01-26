@@ -1,0 +1,13 @@
+#logo {
+	text-align:center;
+}
+
+#header {
+	font-size: 30px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.ui-grid {
+	padding: 5px;
+}

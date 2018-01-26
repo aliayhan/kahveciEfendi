@@ -1,0 +1,50 @@
+{
+  "name": "KahveciefendiShop",
+  "version": "1.0.0",
+  "description": "Client web shop of site kahveciefendi.com",
+  "scripts": {
+    "ngc": "ngc -p ./tsconfig.json",
+    "webpack": "webpack --config=webpack.config.js -p --progress",
+    "start": "webpack-dev-server --progress --watch --port 4040",
+    "build": "npm run ngc && npm run webpack",
+    "server": "live-server --entry-file=index.html"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "2.4.8",
+    "@angular/compiler": "2.4.8",
+    "@angular/core": "2.4.8",
+    "@angular/forms": "2.4.8",
+    "@angular/http": "2.4.8",
+    "@angular/platform-browser": "2.4.8",
+    "@angular/platform-browser-dynamic": "2.4.8",
+    "@angular/router": "3.4.8",
+    "chart.js": "^2.4.0",
+    "core-js": "^2.4.1",
+    "primeng": "^2.0.0",
+    "rxjs": "^5.1.1",
+    "zone.js": "^0.7.7",
+    "ng2-webstorage": "^1.5.0",
+    "js-base64": "^2.1.9"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "2.4.8",
+    "@types/node": "^7.0.5",
+    "angular-ide": "^0.9.14",
+    "angular2-template-loader": "^0.6.1",
+    "awesome-typescript-loader": "^3.0.2",
+    "css-loader": "^0.25.0",
+    "exports-loader": "^0.6.3",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "live-server": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "reflect-metadata": "^0.1.9",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "typescript": "^2.1.6",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  }
+}

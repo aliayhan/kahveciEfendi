@@ -1,0 +1,60 @@
+#logo {
+	text-align: center;
+}
+
+#header {
+	font-size: 30px;
+	margin-bottom: 20px;
+	display: block;
+}
+
+#drinkListAddBtn {
+	padding-top: 15px;
+}
+
+#drinkListPrice {
+	padding-top: 20px;
+}
+
+#orderDeleteBtn {
+	display: block;
+	text-align: center;
+}
+
+#orderDialogPriceAmoutRow {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#dialogAdditions {
+	display: block;
+	text-align: center;
+}
+
+#orderDialogPriceCol {
+	padding-top: 3px;
+}
+
+input[type="number"] {
+	color: #000000;
+	background-color: #ffffff;
+	width: 50px;
+}
+
+.saveBtn {
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.ui-grid {
+	padding: 10px;
+	text-align: center;
+}
+
+.my-text-wrap {
+	display: block;
+	text-align: center;
+	word-wrap: break-word;
+}

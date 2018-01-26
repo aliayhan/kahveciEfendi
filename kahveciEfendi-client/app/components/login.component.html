@@ -1,0 +1,35 @@
+<div class="ui-g">
+  
+  <div *ngIf="(loggedInUser == undefined || loggedInUser == null)" class="ui-g-12">
+    <p-panel header="Simplified Login" [toggleable]="true" [collapsed]="false">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <b>Kullanıcı adı</b>
+        </div>
+        <div class="ui-g-12 ui-fluid">
+          <p-dropdown [options]="selectableUsers" [(ngModel)]="selectedUser" [autoWidth]="false"></p-dropdown>
+        </div>
+        <div class="ui-g-12">
+          <button pButton type="button" (click)="loginUser()" class="ui-button-success" label="Giriş yap"></button>
+        </div>
+      </div> 
+    </p-panel>
+  </div>
+  
+  <div *ngIf="(loggedInUser != undefined && loggedInUser != null)" class="ui-g-12">
+    <p-panel header="Simplified Login" [toggleable]="true" [collapsed]="false">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <b>Kullanıcı adı</b>
+        </div>
+        <div class="ui-g-12 ui-fluid">
+          {{loggedInUser.fullName}}
+        </div>
+        <div class="ui-g-12">
+          <button pButton type="button" (click)="logoutUser()" class="ui-button-success" label="Çıkış yap"></button>
+        </div>
+      </div> 
+    </p-panel>
+  </div>
+  
+</div>
